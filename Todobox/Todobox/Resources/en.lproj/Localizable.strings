@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Todobox
+
+  Created by Dev.MJ on 20/02/2017.
+  Copyright © 2017 Dev.MJ. All rights reserved.
+*/
+
+"new_task_chancel_alert_title" = "Do you really wnat to cancel?" ; // ; 필수
+
+
