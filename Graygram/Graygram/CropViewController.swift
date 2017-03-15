@@ -98,8 +98,13 @@ final class CropViewController: UIViewController {
   
   //imageView는 오토레이아웃으로 하는건 비추.(scrollView안에 들어가므로, zoom할때마다, scroll할때마다 overhead!!
   //imageView frame 설정
-  //UIViewController는 View를 가지는데, 이 View의 `layoutSubviews()` 메서드가 호출된 후에 UIViewController의 `viewDidLayoutSubviews` 메서드가 호출됩니다. 즉, 뷰가 레이아웃 작업을 할 때마다 호출되는 메서드
-  //뷰 컨트롤러의 view에 대한 bounds가 변경되면, 이 메서드는 하위 뷰들의 위치와 크기가 변경된 후에 호출됩니다.
+  /*⭐️⭐️⭐️
+   UIViewController는 View를 가지는데, 이 View의 `layoutSubviews()` 메서드가 호출된 후에 UIViewController의 `viewDidLayoutSubviews` 메서드가 호출됩니다. 즉, 뷰가 레이아웃 작업을 할 때마다 호출되는 메서드
+   */
+  /*⭐️⭐️⭐️
+  오토 레이아웃 constraints는 한 번만 작성되어야 합니다. `viewDidLayoutSubviews`와 `viewDidAppear`는 여러 번 호출되기 때문에 어울리는 장소가 아닙니다.
+  사실 `viewDidLoad`도 이론상으로는 여러번 호출될 수 있기 때문에 오토 레이아웃 코드를 다른 방식으로 작성하는 것을 권장
+   */
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     
