@@ -7,137 +7,107 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4165D774B0D464401C0FE297 /* Pods_GrayGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3922C15C3BC9041DEEAC2022 /* Pods_GrayGram.framework */; };
-		8A577A2C1E66A3D7005B24F1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A577A291E66A3D7005B24F1 /* FeedViewController.swift */; };
-		8A577A2E1E66A3E5005B24F1 /* PostCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A577A2D1E66A3E5005B24F1 /* PostCardCell.swift */; };
-		8A577A301E66A958005B24F1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A577A2F1E66A958005B24F1 /* Post.swift */; };
-		8A577A321E66ACF9005B24F1 /* UIImageView+setImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A577A311E66ACF9005B24F1 /* UIImageView+setImage.swift */; };
-		8A9C5E241E66A0720004808A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C5E1C1E66A0720004808A /* Assets.xcassets */; };
-		8A9C5E251E66A0720004808A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A9C5E1D1E66A0720004808A /* LaunchScreen.storyboard */; };
-		8A9C5E261E66A0720004808A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C5E201E66A0720004808A /* AppDelegate.swift */; };
+		457285365B13D0E7469934B3 /* Pods_Graygram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */; };
+		8A018DF21E6D7B1300BDEEC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A018DF11E6D7B1300BDEEC6 /* LoginViewController.swift */; };
+		8A018DF41E6D96D300BDEEC6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A018DF31E6D96D300BDEEC6 /* SplashViewController.swift */; };
+		8A5D5C921E64566A00F77DAA /* CollectionActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D5C911E64566A00F77DAA /* CollectionActivityIndicatorView.swift */; };
+		8A6070F31E70444600B90231 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6070F21E70444600B90231 /* MainTabBarController.swift */; };
+		8A68587A1E76BE5200DAE6A7 /* UIImage+Grayscaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6858791E76BE5200DAE6A7 /* UIImage+Grayscaled.swift */; };
+		8A68587C1E76C52700DAE6A7 /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A68587B1E76C52700DAE6A7 /* CropViewController.swift */; };
+		8A79BBE71E5DB7A8001D8C31 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BBE61E5DB7A8001D8C31 /* Post.swift */; };
+		8A79BBE91E5DBE18001D8C31 /* PostCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BBE81E5DBE18001D8C31 /* PostCardCell.swift */; };
+		8A79BBEB1E5DCD01001D8C31 /* UIImageView+SetImageWithPhotoID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A79BBEA1E5DCD01001D8C31 /* UIImageView+SetImageWithPhotoID.swift */; };
+		8AD639BD1E5DA9A8008E51ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD639BC1E5DA9A8008E51ED /* AppDelegate.swift */; };
+		8AD639BF1E5DA9A8008E51ED /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD639BE1E5DA9A8008E51ED /* FeedViewController.swift */; };
+		8AD639C41E5DA9A8008E51ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD639C31E5DA9A8008E51ED /* Assets.xcassets */; };
+		8AD639C71E5DA9A8008E51ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AD639C51E5DA9A8008E51ED /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3922C15C3BC9041DEEAC2022 /* Pods_GrayGram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GrayGram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		582D5A3FF0C5FB1A05F20E0E /* Pods-GrayGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrayGram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GrayGram/Pods-GrayGram.debug.xcconfig"; sourceTree = "<group>"; };
-		8A577A291E66A3D7005B24F1 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		8A577A2D1E66A3E5005B24F1 /* PostCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCardCell.swift; sourceTree = "<group>"; };
-		8A577A2F1E66A958005B24F1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		8A577A311E66ACF9005B24F1 /* UIImageView+setImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+setImage.swift"; sourceTree = "<group>"; };
-		8A8890891E669FBC00078C3D /* GrayGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GrayGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A9C5E1C1E66A0720004808A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A9C5E1E1E66A0720004808A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8A9C5E201E66A0720004808A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8A9C5E231E66A0720004808A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0D2BCF92F3429CFEE6B655B /* Pods-GrayGram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GrayGram.release.xcconfig"; path = "Pods/Target Support Files/Pods-GrayGram/Pods-GrayGram.release.xcconfig"; sourceTree = "<group>"; };
+		51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Graygram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A018DF11E6D7B1300BDEEC6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8A018DF31E6D96D300BDEEC6 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		8A5D5C911E64566A00F77DAA /* CollectionActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionActivityIndicatorView.swift; sourceTree = "<group>"; };
+		8A6070F21E70444600B90231 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8A6858791E76BE5200DAE6A7 /* UIImage+Grayscaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscaled.swift"; sourceTree = "<group>"; };
+		8A68587B1E76C52700DAE6A7 /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
+		8A79BBE61E5DB7A8001D8C31 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		8A79BBE81E5DBE18001D8C31 /* PostCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCardCell.swift; sourceTree = "<group>"; };
+		8A79BBEA1E5DCD01001D8C31 /* UIImageView+SetImageWithPhotoID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SetImageWithPhotoID.swift"; sourceTree = "<group>"; };
+		8AD639B91E5DA9A8008E51ED /* Graygram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graygram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD639BC1E5DA9A8008E51ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8AD639BE1E5DA9A8008E51ED /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		8AD639C31E5DA9A8008E51ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AD639C61E5DA9A8008E51ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8AD639C81E5DA9A8008E51ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C0D58869ED81A270921DE3C /* Pods-Graygram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Graygram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Graygram/Pods-Graygram.release.xcconfig"; sourceTree = "<group>"; };
+		D1686D676F7447273ED9F6B1 /* Pods-Graygram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Graygram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Graygram/Pods-Graygram.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8A8890861E669FBC00078C3D /* Frameworks */ = {
+		8AD639B61E5DA9A8008E51ED /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4165D774B0D464401C0FE297 /* Pods_GrayGram.framework in Frameworks */,
+				457285365B13D0E7469934B3 /* Pods_Graygram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6FBE3EEDAA5100B9762724A5 /* Frameworks */ = {
+		1C3FE19B4C2A1EA9E1A9B903 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3922C15C3BC9041DEEAC2022 /* Pods_GrayGram.framework */,
+				51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8A577A281E66A3D7005B24F1 /* ViewController */ = {
+		8AD639B01E5DA9A7008E51ED = {
 			isa = PBXGroup;
 			children = (
-				8A577A291E66A3D7005B24F1 /* FeedViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		8A577A2A1E66A3D7005B24F1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8A577A2F1E66A958005B24F1 /* Post.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		8A577A2B1E66A3D7005B24F1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				8A577A2D1E66A3E5005B24F1 /* PostCardCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		8A8890801E669FBC00078C3D = {
-			isa = PBXGroup;
-			children = (
-				8A9C5E1A1E66A0720004808A /* GrayGram */,
-				8A88908A1E669FBC00078C3D /* Products */,
-				D71F50426B16E1515CBB208C /* Pods */,
-				6FBE3EEDAA5100B9762724A5 /* Frameworks */,
+				8AD639BB1E5DA9A8008E51ED /* Graygram */,
+				8AD639BA1E5DA9A8008E51ED /* Products */,
+				C7759A51917A44D03CC28ADF /* Pods */,
+				1C3FE19B4C2A1EA9E1A9B903 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		8A88908A1E669FBC00078C3D /* Products */ = {
+		8AD639BA1E5DA9A8008E51ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8A8890891E669FBC00078C3D /* GrayGram.app */,
+				8AD639B91E5DA9A8008E51ED /* Graygram.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8A9C5E1A1E66A0720004808A /* GrayGram */ = {
+		8AD639BB1E5DA9A8008E51ED /* Graygram */ = {
 			isa = PBXGroup;
 			children = (
-				8A9C5E1B1E66A0720004808A /* Resources */,
-				8A9C5E1F1E66A0720004808A /* Sources */,
-				8A9C5E221E66A0720004808A /* Supporting */,
+				8AD639BC1E5DA9A8008E51ED /* AppDelegate.swift */,
+				8AD639BE1E5DA9A8008E51ED /* FeedViewController.swift */,
+				8AD639C31E5DA9A8008E51ED /* Assets.xcassets */,
+				8AD639C51E5DA9A8008E51ED /* LaunchScreen.storyboard */,
+				8AD639C81E5DA9A8008E51ED /* Info.plist */,
+				8A79BBE61E5DB7A8001D8C31 /* Post.swift */,
+				8A79BBE81E5DBE18001D8C31 /* PostCardCell.swift */,
+				8A79BBEA1E5DCD01001D8C31 /* UIImageView+SetImageWithPhotoID.swift */,
+				8A5D5C911E64566A00F77DAA /* CollectionActivityIndicatorView.swift */,
+				8A018DF11E6D7B1300BDEEC6 /* LoginViewController.swift */,
+				8A018DF31E6D96D300BDEEC6 /* SplashViewController.swift */,
+				8A6070F21E70444600B90231 /* MainTabBarController.swift */,
+				8A6858791E76BE5200DAE6A7 /* UIImage+Grayscaled.swift */,
+				8A68587B1E76C52700DAE6A7 /* CropViewController.swift */,
 			);
-			path = GrayGram;
+			path = Graygram;
 			sourceTree = "<group>";
 		};
-		8A9C5E1B1E66A0720004808A /* Resources */ = {
+		C7759A51917A44D03CC28ADF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8A9C5E1C1E66A0720004808A /* Assets.xcassets */,
-				8A9C5E1D1E66A0720004808A /* LaunchScreen.storyboard */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		8A9C5E1F1E66A0720004808A /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				8A9C5E201E66A0720004808A /* AppDelegate.swift */,
-				8A577A311E66ACF9005B24F1 /* UIImageView+setImage.swift */,
-				8A577A281E66A3D7005B24F1 /* ViewController */,
-				8A577A2A1E66A3D7005B24F1 /* Model */,
-				8A577A2B1E66A3D7005B24F1 /* View */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		8A9C5E221E66A0720004808A /* Supporting */ = {
-			isa = PBXGroup;
-			children = (
-				8A9C5E231E66A0720004808A /* Info.plist */,
-			);
-			path = Supporting;
-			sourceTree = "<group>";
-		};
-		D71F50426B16E1515CBB208C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				582D5A3FF0C5FB1A05F20E0E /* Pods-GrayGram.debug.xcconfig */,
-				E0D2BCF92F3429CFEE6B655B /* Pods-GrayGram.release.xcconfig */,
+				D1686D676F7447273ED9F6B1 /* Pods-Graygram.debug.xcconfig */,
+				9C0D58869ED81A270921DE3C /* Pods-Graygram.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -145,44 +115,44 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8A8890881E669FBC00078C3D /* GrayGram */ = {
+		8AD639B81E5DA9A8008E51ED /* Graygram */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A88909B1E669FBC00078C3D /* Build configuration list for PBXNativeTarget "GrayGram" */;
+			buildConfigurationList = 8AD639CB1E5DA9A8008E51ED /* Build configuration list for PBXNativeTarget "Graygram" */;
 			buildPhases = (
-				8E4A0E008A3AC92C5BBA0120 /* [CP] Check Pods Manifest.lock */,
-				8A8890851E669FBC00078C3D /* Sources */,
-				8A8890861E669FBC00078C3D /* Frameworks */,
-				8A8890871E669FBC00078C3D /* Resources */,
-				6B580A87956E4E98C3BA466A /* [CP] Embed Pods Frameworks */,
-				A123313201D28BF7CAEA4F10 /* [CP] Copy Pods Resources */,
+				72C99118FEED97BCB2E1136C /* [CP] Check Pods Manifest.lock */,
+				8AD639B51E5DA9A8008E51ED /* Sources */,
+				8AD639B61E5DA9A8008E51ED /* Frameworks */,
+				8AD639B71E5DA9A8008E51ED /* Resources */,
+				9F9BAF7AC25893E0BE447161 /* [CP] Embed Pods Frameworks */,
+				0C9989A40448B79269955A7A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GrayGram;
-			productName = GrayGram;
-			productReference = 8A8890891E669FBC00078C3D /* GrayGram.app */;
+			name = Graygram;
+			productName = Graygram;
+			productReference = 8AD639B91E5DA9A8008E51ED /* Graygram.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8A8890811E669FBC00078C3D /* Project object */ = {
+		8AD639B11E5DA9A7008E51ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = HelloMJ;
+				ORGANIZATIONNAME = Dev.MJ;
 				TargetAttributes = {
-					8A8890881E669FBC00078C3D = {
+					8AD639B81E5DA9A8008E51ED = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 78F59JC234;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 8A8890841E669FBC00078C3D /* Build configuration list for PBXProject "GrayGram" */;
+			buildConfigurationList = 8AD639B41E5DA9A7008E51ED /* Build configuration list for PBXProject "Graygram" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -190,45 +160,45 @@
 				en,
 				Base,
 			);
-			mainGroup = 8A8890801E669FBC00078C3D;
-			productRefGroup = 8A88908A1E669FBC00078C3D /* Products */;
+			mainGroup = 8AD639B01E5DA9A7008E51ED;
+			productRefGroup = 8AD639BA1E5DA9A8008E51ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8A8890881E669FBC00078C3D /* GrayGram */,
+				8AD639B81E5DA9A8008E51ED /* Graygram */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8A8890871E669FBC00078C3D /* Resources */ = {
+		8AD639B71E5DA9A8008E51ED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9C5E241E66A0720004808A /* Assets.xcassets in Resources */,
-				8A9C5E251E66A0720004808A /* LaunchScreen.storyboard in Resources */,
+				8AD639C71E5DA9A8008E51ED /* LaunchScreen.storyboard in Resources */,
+				8AD639C41E5DA9A8008E51ED /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6B580A87956E4E98C3BA466A /* [CP] Embed Pods Frameworks */ = {
+		0C9989A40448B79269955A7A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GrayGram/Pods-GrayGram-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Graygram/Pods-Graygram-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8E4A0E008A3AC92C5BBA0120 /* [CP] Check Pods Manifest.lock */ = {
+		72C99118FEED97BCB2E1136C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -243,43 +213,49 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A123313201D28BF7CAEA4F10 /* [CP] Copy Pods Resources */ = {
+		9F9BAF7AC25893E0BE447161 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GrayGram/Pods-GrayGram-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Graygram/Pods-Graygram-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8A8890851E669FBC00078C3D /* Sources */ = {
+		8AD639B51E5DA9A8008E51ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A577A321E66ACF9005B24F1 /* UIImageView+setImage.swift in Sources */,
-				8A577A2C1E66A3D7005B24F1 /* FeedViewController.swift in Sources */,
-				8A9C5E261E66A0720004808A /* AppDelegate.swift in Sources */,
-				8A577A2E1E66A3E5005B24F1 /* PostCardCell.swift in Sources */,
-				8A577A301E66A958005B24F1 /* Post.swift in Sources */,
+				8A68587A1E76BE5200DAE6A7 /* UIImage+Grayscaled.swift in Sources */,
+				8A018DF21E6D7B1300BDEEC6 /* LoginViewController.swift in Sources */,
+				8A79BBE71E5DB7A8001D8C31 /* Post.swift in Sources */,
+				8A6070F31E70444600B90231 /* MainTabBarController.swift in Sources */,
+				8A5D5C921E64566A00F77DAA /* CollectionActivityIndicatorView.swift in Sources */,
+				8A79BBE91E5DBE18001D8C31 /* PostCardCell.swift in Sources */,
+				8AD639BF1E5DA9A8008E51ED /* FeedViewController.swift in Sources */,
+				8A79BBEB1E5DCD01001D8C31 /* UIImageView+SetImageWithPhotoID.swift in Sources */,
+				8AD639BD1E5DA9A8008E51ED /* AppDelegate.swift in Sources */,
+				8A68587C1E76C52700DAE6A7 /* CropViewController.swift in Sources */,
+				8A018DF41E6D96D300BDEEC6 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8A9C5E1D1E66A0720004808A /* LaunchScreen.storyboard */ = {
+		8AD639C51E5DA9A8008E51ED /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8A9C5E1E1E66A0720004808A /* Base */,
+				8AD639C61E5DA9A8008E51ED /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -287,7 +263,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8A8890991E669FBC00078C3D /* Debug */ = {
+		8AD639C91E5DA9A8008E51ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -336,7 +312,7 @@
 			};
 			name = Debug;
 		};
-		8A88909A1E669FBC00078C3D /* Release */ = {
+		8AD639CA1E5DA9A8008E51ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -378,31 +354,29 @@
 			};
 			name = Release;
 		};
-		8A88909C1E669FBC00078C3D /* Debug */ = {
+		8AD639CC1E5DA9A8008E51ED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 582D5A3FF0C5FB1A05F20E0E /* Pods-GrayGram.debug.xcconfig */;
+			baseConfigurationReference = D1686D676F7447273ED9F6B1 /* Pods-Graygram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 78F59JC234;
-				INFOPLIST_FILE = "$(SRCROOT)/GrayGram/Supporting/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = Graygram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HelloMJ.GrayGram;
+				PRODUCT_BUNDLE_IDENTIFIER = Dev.MJ.Graygram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		8A88909D1E669FBC00078C3D /* Release */ = {
+		8AD639CD1E5DA9A8008E51ED /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0D2BCF92F3429CFEE6B655B /* Pods-GrayGram.release.xcconfig */;
+			baseConfigurationReference = 9C0D58869ED81A270921DE3C /* Pods-Graygram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 78F59JC234;
-				INFOPLIST_FILE = "$(SRCROOT)/GrayGram/Supporting/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = Graygram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = HelloMJ.GrayGram;
+				PRODUCT_BUNDLE_IDENTIFIER = Dev.MJ.Graygram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -411,25 +385,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A8890841E669FBC00078C3D /* Build configuration list for PBXProject "GrayGram" */ = {
+		8AD639B41E5DA9A7008E51ED /* Build configuration list for PBXProject "Graygram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8A8890991E669FBC00078C3D /* Debug */,
-				8A88909A1E669FBC00078C3D /* Release */,
+				8AD639C91E5DA9A8008E51ED /* Debug */,
+				8AD639CA1E5DA9A8008E51ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A88909B1E669FBC00078C3D /* Build configuration list for PBXNativeTarget "GrayGram" */ = {
+		8AD639CB1E5DA9A8008E51ED /* Build configuration list for PBXNativeTarget "Graygram" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8A88909C1E669FBC00078C3D /* Debug */,
-				8A88909D1E669FBC00078C3D /* Release */,
+				8AD639CC1E5DA9A8008E51ED /* Debug */,
+				8AD639CD1E5DA9A8008E51ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8A8890811E669FBC00078C3D /* Project object */;
+	rootObject = 8AD639B11E5DA9A7008E51ED /* Project object */;
 }
