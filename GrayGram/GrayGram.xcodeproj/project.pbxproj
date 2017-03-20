@@ -10,6 +10,10 @@
 		457285365B13D0E7469934B3 /* Pods_Graygram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */; };
 		8A018DF21E6D7B1300BDEEC6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A018DF11E6D7B1300BDEEC6 /* LoginViewController.swift */; };
 		8A018DF41E6D96D300BDEEC6 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A018DF31E6D96D300BDEEC6 /* SplashViewController.swift */; };
+		8A2048C41E795A80008955F2 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2048C31E795A80008955F2 /* PostEditorViewController.swift */; };
+		8A2048C61E795B5A008955F2 /* PostEditorImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2048C51E795B5A008955F2 /* PostEditorImageCell.swift */; };
+		8A2048C81E7964CC008955F2 /* PostEditorMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2048C71E7964CC008955F2 /* PostEditorMessageCell.swift */; };
+		8A2048CA1E7966DC008955F2 /* String+BoundingRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2048C91E7966DC008955F2 /* String+BoundingRect.swift */; };
 		8A5D5C921E64566A00F77DAA /* CollectionActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5D5C911E64566A00F77DAA /* CollectionActivityIndicatorView.swift */; };
 		8A6070F31E70444600B90231 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6070F21E70444600B90231 /* MainTabBarController.swift */; };
 		8A68587A1E76BE5200DAE6A7 /* UIImage+Grayscaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6858791E76BE5200DAE6A7 /* UIImage+Grayscaled.swift */; };
@@ -27,6 +31,10 @@
 		51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Graygram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A018DF11E6D7B1300BDEEC6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8A018DF31E6D96D300BDEEC6 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		8A2048C31E795A80008955F2 /* PostEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
+		8A2048C51E795B5A008955F2 /* PostEditorImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorImageCell.swift; sourceTree = "<group>"; };
+		8A2048C71E7964CC008955F2 /* PostEditorMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEditorMessageCell.swift; sourceTree = "<group>"; };
+		8A2048C91E7966DC008955F2 /* String+BoundingRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+BoundingRect.swift"; sourceTree = "<group>"; };
 		8A5D5C911E64566A00F77DAA /* CollectionActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionActivityIndicatorView.swift; sourceTree = "<group>"; };
 		8A6070F21E70444600B90231 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8A6858791E76BE5200DAE6A7 /* UIImage+Grayscaled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Grayscaled.swift"; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 				8A6070F21E70444600B90231 /* MainTabBarController.swift */,
 				8A6858791E76BE5200DAE6A7 /* UIImage+Grayscaled.swift */,
 				8A68587B1E76C52700DAE6A7 /* CropViewController.swift */,
+				8A2048C31E795A80008955F2 /* PostEditorViewController.swift */,
+				8A2048C51E795B5A008955F2 /* PostEditorImageCell.swift */,
+				8A2048C71E7964CC008955F2 /* PostEditorMessageCell.swift */,
+				8A2048C91E7966DC008955F2 /* String+BoundingRect.swift */,
 			);
 			path = Graygram;
 			sourceTree = "<group>";
@@ -236,13 +248,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A68587A1E76BE5200DAE6A7 /* UIImage+Grayscaled.swift in Sources */,
+				8A2048C61E795B5A008955F2 /* PostEditorImageCell.swift in Sources */,
 				8A018DF21E6D7B1300BDEEC6 /* LoginViewController.swift in Sources */,
 				8A79BBE71E5DB7A8001D8C31 /* Post.swift in Sources */,
 				8A6070F31E70444600B90231 /* MainTabBarController.swift in Sources */,
 				8A5D5C921E64566A00F77DAA /* CollectionActivityIndicatorView.swift in Sources */,
+				8A2048C41E795A80008955F2 /* PostEditorViewController.swift in Sources */,
+				8A2048CA1E7966DC008955F2 /* String+BoundingRect.swift in Sources */,
 				8A79BBE91E5DBE18001D8C31 /* PostCardCell.swift in Sources */,
 				8AD639BF1E5DA9A8008E51ED /* FeedViewController.swift in Sources */,
 				8A79BBEB1E5DCD01001D8C31 /* UIImageView+SetImageWithPhotoID.swift in Sources */,
+				8A2048C81E7964CC008955F2 /* PostEditorMessageCell.swift in Sources */,
 				8AD639BD1E5DA9A8008E51ED /* AppDelegate.swift in Sources */,
 				8A68587C1E76C52700DAE6A7 /* CropViewController.swift in Sources */,
 				8A018DF41E6D96D300BDEEC6 /* SplashViewController.swift in Sources */,

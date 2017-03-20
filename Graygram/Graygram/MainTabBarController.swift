@@ -43,6 +43,12 @@ final class MainTabBarController: UITabBarController {
     
     self.present(imagePickerController, animated: true, completion: nil)  //present는 UIVC에 있는 함수이므로 tabBArController도 사용가능
   }
+  
+  func presentPostEditorViewController(image: UIImage, from: UINavigationController){
+    let postEditorViewController = PostEditorViewController(image: image)
+    //uiimagepickerViewController가 갖고 있는 navigationController에 띄워야 하므로, 해당 정보가 있어야 함. 그래서 from 추가
+    from.pushViewController(postEditorViewController, animated: true)
+  }
 }
 
 
@@ -50,7 +56,6 @@ extension MainTabBarController: UITabBarControllerDelegate {
   
   // viewcontroller 전환 판단(true: VC 전환, false: 전환X)
   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    
     if viewController === self.fakeViewController { // ⭐️⭐️⭐️ === : AnyObject(모두 reference type)에만 적용가능. cf: Any는 value type
                                                     // 즉 가리키는 포인터가 동일한지 체크
       self.presentImagePickerController()
@@ -84,9 +89,14 @@ extension MainTabBarController: UIImagePickerControllerDelegate {
     //⭐️이제 이 선택한 이미지를 cropVC에 전달하자!! - init에 전달할것!!
     let cropViewController = CropViewController(image: grayscaledImage)
     //push로 화면 전환. imagepickerController는 자체적으로 navigatioController 지원
+    
+    //⭐️⭐️CropViewController에서 이미지 수정이 완료되었다는 것을 캐치해서 포스트작성VC 로 넘겨줌
+    cropViewController.didFinishCropping = { image in
+      // TODO: 포스트 작성 화면 띄우기
+      self.presentPostEditorViewController(image: image, from: picker)
+    }
+    
     picker.pushViewController(cropViewController, animated: true)
-    
-    
   }
   
   //cancel 눌렀을 떄

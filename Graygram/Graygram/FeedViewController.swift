@@ -63,6 +63,7 @@ class FeedViewController: UIViewController {
     //⭐️addObserver는 자동 해지가 안되므로 꼭 해지해야함!!!! - 이 noti가 수신이 필요 없을 때!! 이 vc가 없을 때 -> deinit
     NotificationCenter.default.addObserver(self, selector: #selector(postDidLike), name: .postDidLike, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(postDidUnlike), name: .postDidUnlike, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(postDidCreate), name: .postDidCreate, object: nil)
 
   }
   
@@ -145,7 +146,7 @@ class FeedViewController: UIViewController {
   func postDidLike(notification: Notification){
     guard let postID = notification.userInfo?["postID"] as? Int else { return }
 //    for post in self.posts {  // ⭐️ 여기의 post는 let이므로 값 변경 불가.
-    for (i, post) in self.posts.enumerated() {  // ⭐️ enumerated 사용하면 i, post 이렇게 사용 가능(인덱스를 손쉽게 가져다 쓸 수 있따!!!!!!!)
+    for (i, post) in self.posts.enumerated() {  // ⭐️⭐️⭐️ enumerated 사용하면 i, post 이렇게 사용 가능(인덱스를 손쉽게 가져다 쓸 수 있따!!!!!!!)
       if post.id == postID {
         var newPost = post  // ⭐️⭐️
         newPost.isLiked = true
@@ -156,6 +157,7 @@ class FeedViewController: UIViewController {
       }
     }
   }
+  
   func postDidUnlike(notification: Notification){
     guard let postID = notification.userInfo?["postID"] as? Int else { return }
     for (i, post) in self.posts.enumerated() {
@@ -169,6 +171,13 @@ class FeedViewController: UIViewController {
       }
     }
   }
+  
+  func postDidCreate(notification: Notification){
+    guard let post = notification.userInfo?["post"] as? Post else { return }
+    self.posts.insert(post, at: 0)
+    self.collectionView.reloadData()
+  }
+  
 }
 
 extension FeedViewController: UICollectionViewDataSource {
@@ -194,7 +203,6 @@ extension FeedViewController: UICollectionViewDataSource {
     let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
                                                                withReuseIdentifier: "activityIndicatorView",
                                                                for: indexPath)
-    
     return view
   }
 }

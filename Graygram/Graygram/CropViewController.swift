@@ -10,6 +10,10 @@ import UIKit
 
 final class CropViewController: UIViewController {
   
+  //crop이 완료된 이미지를 클로져로 전달. 초기값이 없기 때문에 ()로 감싸서 Optional로 정의.
+  var didFinishCropping: ((UIImage) -> Void)?
+  //var didFinishCropping: ((image: UIImage) -> Void)?  3.0부터는 안됨. (_ image: UIImage)로는 가능
+  
   fileprivate let scrollView = UIScrollView() //zoom, scroll 하기 위함
   fileprivate let imageView = UIImageView()
   
@@ -41,8 +45,12 @@ final class CropViewController: UIViewController {
     self.view.backgroundColor = .white
     
     //⭐️이렇게 leftBarButtom을 넣으면 swipe back이 없어짐.
-    self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonDidTap))
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidTap))
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
+                                                            target: self,
+                                                            action: #selector(cancelButtonDidTap))
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                                             target: self,
+                                                             action: #selector(doneButtonDidTap))
     
     self.scrollView.delegate = self
     self.scrollView.showsVerticalScrollIndicator = false
@@ -51,10 +59,9 @@ final class CropViewController: UIViewController {
     
     //cropAreaView의 테두리 작성,  CALayer : Core Animation Layer
     self.cropAreaView.layer.borderColor = UIColor.black.cgColor
-    //self.cropAreaView.layer.borderWidth = 1   //1px -> 6에서는 2px, plus에서는 3px로 그려짐
-    self.cropAreaView.layer.borderWidth = 1 / UIScreen.main.scale // ⭐️ plus: 3, 6: 2 임. -> 각 기종마다 1px로 그려짐
+    //self.cropAreaView.layer.borderWidth = 1   //⭐️⭐️ 1px -> 6에서는 2px, plus에서는 3px로 그려짐
+    self.cropAreaView.layer.borderWidth = 1 / UIScreen.main.scale // ⭐️⭐️ plus: 3, 6: 2 임. -> 각 기종마다 1px로 그려짐
     
-    self.cropAreaTopCoverView.backgroundColor = .red
     self.cropAreaTopCoverView.alpha = 0.7
     self.cropAreaBottomCoverView.backgroundColor = .white
     self.cropAreaBottomCoverView.alpha = 0.7
@@ -93,7 +100,6 @@ final class CropViewController: UIViewController {
       make.bottom.equalToSuperview()
     }
     
-    self.scrollView.backgroundColor = .gray
   }
   
   //imageView는 오토레이아웃으로 하는건 비추.(scrollView안에 들어가므로, zoom할때마다, scroll할때마다 overhead!!
@@ -171,9 +177,12 @@ final class CropViewController: UIViewController {
     //UIView.convert(CGRect, to:)
     
     //⭐️⭐️⭐️
-    var rect = self.scrollView.convert(self.cropAreaView.frame, from: self.cropAreaView.superview)  //self.view가 본 cropAreaView의 frame을 scrollView가 본 cropAreaView의 frame으로 바꾼다 -> scrollView의 imageView의 frame을 cropAreaView에서도 같이 계산할 수 있음
+    var rect = self.scrollView.convert(self.cropAreaView.frame, from: self.cropAreaView.superview)
+    //self.view가 본 cropAreaView의 frame을 scrollView가 본 cropAreaView의 frame으로 바꾼다 -> scrollView의 imageView의 frame을 cropAreaView에서도 같이 계산할 수 있음
+    //imageView의 기준좌표계와 cropAreaView의 기준좌표계 통일
+    //기준좌표계 : self.scrollView / self.cropAreaView.superview가 기준인 self.cropAreaView.frame을 self.scrollView의 기준좌표계로 변환하겠다.
     
-    //원래 이미지크기와 이미지뷰크기의 비율만큼 crop될 영역도 커지거나 줄어져야 하므로 비율만큼 곱해줌. 스크롤시에도 x, y 이동하는 정도가 비율과 같으므로
+    //원래 이미지크기와 이미지뷰크기의 비율만큼 crop될 영역도 커지거나 줄어져야 하므로 그  곱해줌. 스크롤시에도 x, y 이동하는 정도가 비율과 같으므로
     rect.origin.x *= image.size.width / self.imageView.width
     rect.origin.y *= image.size.height / self.imageView.height
     rect.size.width *= image.size.width / self.imageView.width
@@ -182,6 +191,7 @@ final class CropViewController: UIViewController {
     if let croppedCGImage = image.cgImage?.cropping(to: rect) {
       let croppedImage = UIImage(cgImage: croppedCGImage)
       print(croppedImage)
+      self.didFinishCropping?(croppedImage) //croppedImage 전달!
     }
   }
   

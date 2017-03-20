@@ -154,6 +154,7 @@ final class PostCardCell: UICollectionViewCell {
     if let message = post.message, !message.isEmpty {
       height += Metric.messageLabelTop
       
+      //string이 랜더링 될 최대 크기
       let messageLabelMaxSize = CGSize(width: width - Metric.messageLabelLeft - Metric.messageLabelRight, height: Font.memessageLabel.lineHeight * 3)
       // ⭐️⭐️⭐️ boundingRect는 NSString에서만 구현 가능하므로 casting후에 as NSString 지우면 가능하다....
       //문자열을 그리는데 필요한 공간 계산!
