@@ -8,7 +8,7 @@
 
 import UIKit
 
-import Alamofire
+//import Alamofire
 
 class FeedViewController: UIViewController {
   
@@ -90,9 +90,34 @@ class FeedViewController: UIViewController {
   }
   
   func refreshControlDidChangeValue(){  // ⭐️ 여기에 fileprivate만 쓰면 에러. selector에서 쓰려면 private안됨. but dynamic과 함께 사용하면 됨
-    self.loadFeed(isMore: false)
+    //self.loadFeed(isMore: false)
+    self.loadFeed(paging: .refresh)
   }
   
+  func loadFeed(paging: Paging) {
+    guard !self.isLoading else { return }
+    self.isLoading = true
+    
+    FeedService.feed(paging: paging){ response in
+      self.isLoading = false
+      self.refreshControl.endRefreshing()
+      
+      switch response.result {
+      case .success(let feed):  //이때 넘어오는 value는 Feed type으로 넘어옴
+        switch paging {
+        case .refresh:
+          self.posts = feed.posts
+        case .next:
+          self.posts.append(contentsOf: feed.posts)
+        }
+        self.nextURLString = feed.nextURLString
+        self.collectionView.reloadData()
+      case .failure(let error):
+        print("피드 요청 실패 : \(error)")
+      }
+    }
+  }
+  /*
   func loadFeed(isMore: Bool){
     //중복 로딩 방지(false일때만 통과)
     guard !self.isLoading else { return }
@@ -139,7 +164,7 @@ class FeedViewController: UIViewController {
         }
     }
   }
-  
+  */
   
   // MARK: - Notifications
   
@@ -216,7 +241,10 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     //⭐️ 따라서 contentOffSet + collectioinView Height = contentSize
     //⭐️ scrollView.contentSize : 스크롤 최대 높이
     if scrollView.contentOffset.y + scrollView.height >= scrollView.contentSize.height - 200 && scrollView.contentSize.height > 0 {
-      loadFeed(isMore: true)
+      //loadFeed(isMore: true)
+      if let nextURLString = self.nextURLString {
+        self.loadFeed(paging: .next(nextURLString))
+      }
     }
   }
   

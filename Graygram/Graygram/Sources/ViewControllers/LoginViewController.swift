@@ -8,7 +8,7 @@
 
 import UIKit
 
-import Alamofire  // ⭐️ global scope인지 extension인지에 따라.
+//import Alamofire  // ⭐️ global scope인지 extension인지에 따라.
 
 final class LoginViewController: UIViewController {
   
@@ -107,6 +107,45 @@ final class LoginViewController: UIViewController {
     self.loginButton.isEnabled = false
     self.loginButton.alpha = 0.4  //보통 비활성화된 component의 alpha값은 0.4 사용
     
+    AutoService.login(username: username, password: password){ response in
+      switch response.result {
+      case .success:
+        print("로그인 성공!")
+        //이제 세션에 로그인정보가 남아있는 상태임!!
+        AppDelegate.instance?.presentMainScreen()
+      case .failure:
+        self.usernameTextField.isEnabled = true
+        self.passwordTextField.isEnabled = true
+        self.loginButton.isEnabled = true
+        self.loginButton.alpha = 1
+        
+        //여기는 error만 떨어짐. 그래서 이 상태에서 response오는 json을 받아오려면 response로부터 꺼내와야 함
+        //          JSONSerialization //json을 풀거나 만들 수 있는 녀석
+        if let data = response.data,
+          /*
+           do {
+           try JSONSerialization.jsonObject(with: data)//, options: JSONSerialization.ReadingOptions) throws <- ⭐️⭐️ error를 던질 수 있다는 의미. <- do try catch 사용해야 함
+           } catch (let jsonError) {
+           print("JSON Serialization failure : \(jsonError)")
+           }
+           */
+          let json = try? JSONSerialization.jsonObject(with: data), // ⭐️⭐️ try? : 성공하면 그냥 그 값 반환, 에러이면 nil 반환. 따라서 ! 사용하면 nil반환할 때 crash
+          let dict = json as? [String: Any],
+          let errorInfo = dict["error"] as? [String: Any] {
+          
+          let field = errorInfo["field"] as? String
+          if field == "username" {  // ⭐️⭐️ Any는 == 비교 불가
+            self.usernameTextField.becomeFirstResponder()
+            self.usernameTextField.textColor = .red
+          }else if field == "password" {
+            self.passwordTextField.becomeFirstResponder()
+            self.passwordTextField.textColor = .red
+          }
+        }
+      }
+    }
+    
+    /*
     let urlString = "https://api.graygram.com/login/username"
     //Alamofire.request(url: URLConvertible)
     //global scope이므로 굳이 Alamofire에서 .request 안해줘도 됨
@@ -165,5 +204,6 @@ final class LoginViewController: UIViewController {
           */
         }
     }
+ */
   }  
 }

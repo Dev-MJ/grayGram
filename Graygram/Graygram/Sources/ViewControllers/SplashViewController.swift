@@ -8,7 +8,7 @@
 
 import UIKit
 
-import Alamofire
+//import Alamofire
 
 final class SplashViewController: UIViewController {
   
@@ -31,8 +31,19 @@ final class SplashViewController: UIViewController {
     super.viewDidAppear(animated)
     //application이 초기화 되고 view가 그려진 직후
     
+    
+    UserService.me() { response in
+      switch response.result {
+      case .success:
+        AppDelegate.instance?.presentMainScreen()
+      case .failure:
+        AppDelegate.instance?.presentLoginScreen()
+      }
+    }
+    
+    
     checkLoginSession()
-    /*
+    /* ⭐️⭐️
      Q. 왜 viewDidLoad에 안하고 여기에 할까?
      A. viewDidLoad가 Appdelegate에 있는 let viewController = SplashViewController()
                                       window.rootViewController = viewController
@@ -43,6 +54,7 @@ final class SplashViewController: UIViewController {
   }
   
   func checkLoginSession(){
+    /*
     let urlString = "https://api.graygram.com/me" // ⭐️⭐️⭐️ alamofire에서는 계속 세션 저장(쿠키에 저장)하므로 이렇게 요청해도 세션 확인 가능함.
     request(urlString)
       .validate(statusCode: 200..<400)
@@ -57,9 +69,8 @@ final class SplashViewController: UIViewController {
         case .failure:
           AppDelegate.instance?.presentLoginScreen()
         }
-        
-        
     }
+ */
   }
   
   
