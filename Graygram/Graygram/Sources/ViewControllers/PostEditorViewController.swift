@@ -16,6 +16,7 @@ final class PostEditorViewController: UIViewController {
   fileprivate var message: String = ""
   
   fileprivate let tableView = UITableView(frame: .zero, style: .grouped)  //이렇게 하면 위쪽 여백이 생김. section 별로 묶어주는 style
+  fileprivate let progressView = UIProgressView()
   
   //crop된 이미지를 생성자로 전달받음
   init(image: UIImage) {
@@ -39,11 +40,23 @@ final class PostEditorViewController: UIViewController {
     self.tableView.register(PostEditorImageCell.self, forCellReuseIdentifier: "imageCell")
     self.tableView.register(PostEditorMessageCell.self, forCellReuseIdentifier: "messageCell")
     
+    self.progressView.isHidden = true //done 누르기 전에는 Hidden처리
+    
     self.view.addSubview(self.tableView)
+    self.view.addSubview(self.progressView)
     
     self.tableView.snp.makeConstraints{ make in
       make.edges.equalToSuperview()
     }
+    
+    //⭐️자기 자신의 높이 갖고 있음
+    self.progressView.snp.makeConstraints{ make in
+      make.left.right.equalToSuperview()
+      make.top.equalTo(self.topLayoutGuide.snp.bottom)  //⭐️⭐️naivgationBar의 하단에 붙어야 하므로.
+    }
+    
+    
+    
     //NotificationCenter는 defaultCenter라느 싱글톤 object 제공
     //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
     //⭐️⭐️⭐️keyboard의 frame이 변하기 직전에 호출되는 noti. 이거 하나로 퉁 치면 된다!
@@ -89,6 +102,8 @@ final class PostEditorViewController: UIViewController {
     //미디어의 경우 이런 쿼리파라메터로 넘길 수가 없음 get - /foo?bar=Hello&baz=World
     // post의 경우 urlencoded 사용하면 url은 /foo , body에 bar=Hello&baz=World 이렇게 쿼리파라메터 형식으로넘어가는것. 따라서 이것도 미디어에는 부적합
     
+    self.progressView.isHidden = false
+    
     // ⭐️⭐️⭐️⭐️Multipart FormData - 큰 파일을 바이너리로 보낼 수 있는 형식
     let urlString = "https://api.graygram.com/posts"
     let headers: HTTPHeaders = [
@@ -115,8 +130,19 @@ final class PostEditorViewController: UIViewController {
       case .success(let request, _, _ ):
         //Alamofire.request(url)
         request //api 요청
+          /*
+          .uploadProgress(closure: { (<#Progress#>) in
+            <#code#>
+          })
+          */
+          .uploadProgress{ progress in  //⭐️progress : 전체 task의 양과 현재 task의 양 다 갖고 있음
+            print("\(progress.completedUnitCount) / \(progress.totalUnitCount)")
+            //self.progressView.progress  //Float 타입. 0~1까지 지정 가능
+            //.uploadProgress에서의 UnitCount는 Int64
+            self.progressView.progress = Float(progress.completedUnitCount) / Float(progress.totalUnitCount)
+          }
           .validate(statusCode: 200..<400)
-          .responseJSON{ response in
+          .responseJSON{ response in  //response도착이 완료된 시점에 responseJSON이 호출되는것.
             switch response.result {
             case .success(let value):
               print("업로드 성공 : \(value)")
@@ -129,10 +155,14 @@ final class PostEditorViewController: UIViewController {
               self.dismiss(animated: true, completion: nil)
             case .failure(let error):
               print("업로드 실패 : \(error)")
+              self.progressView.isHidden = true
+              self.progressView.progress = 0
             }
           }
       case .failure(let error):
-        print("인코딩 실패 : \(error)")
+        print("인코딩 실패 : \(error)")  // multipart formdata를 만들지 못한 경우
+        self.progressView.isHidden = true
+        self.progressView.progress = 0
       }
     })
   }
