@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		457285365B13D0E7469934B3 /* Pods_Graygram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */; };
+		8AB057491E8292660076DDFC /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB057481E8292660076DDFC /* PostService.swift */; };
+		8AB0574B1E82A39E0076DDFC /* PostTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0574A1E82A39E0076DDFC /* PostTileCell.swift */; };
+		8AB0574D1E82A6A90076DDFC /* FeedViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0574C1E82A6A90076DDFC /* FeedViewMode.swift */; };
+		8AB0574F1E82AAD60076DDFC /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0574E1E82AAD60076DDFC /* PostViewController.swift */; };
 		8ADE0EBB1E7FF44700CE0EAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE0EA21E7FF44700CE0EAA /* Assets.xcassets */; };
 		8ADE0EBC1E7FF44700CE0EAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE0EA31E7FF44700CE0EAA /* LaunchScreen.storyboard */; };
 		8ADE0EBD1E7FF44700CE0EAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE0EA61E7FF44700CE0EAA /* AppDelegate.swift */; };
@@ -37,6 +41,10 @@
 
 /* Begin PBXFileReference section */
 		51DCB7168F5B5B4AD7E58B0A /* Pods_Graygram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Graygram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AB057481E8292660076DDFC /* PostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		8AB0574A1E82A39E0076DDFC /* PostTileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTileCell.swift; sourceTree = "<group>"; };
+		8AB0574C1E82A6A90076DDFC /* FeedViewMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewMode.swift; sourceTree = "<group>"; };
+		8AB0574E1E82AAD60076DDFC /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8AD639B91E5DA9A8008E51ED /* Graygram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graygram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADE0EA21E7FF44700CE0EAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ADE0EA41E7FF44700CE0EAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -136,6 +144,7 @@
 				8ADE0EB41E7FF44700CE0EAA /* Views */,
 				8ADE0ED21E8000E400CE0EAA /* MappingError.swift */,
 				8ADE0EDA1E80102800CE0EAA /* Paging.swift */,
+				8AB0574C1E82A6A90076DDFC /* FeedViewMode.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -170,6 +179,7 @@
 				8ADE0EB11E7FF44700CE0EAA /* MainTabBarController.swift */,
 				8ADE0EB21E7FF44700CE0EAA /* PostEditorViewController.swift */,
 				8ADE0EB31E7FF44700CE0EAA /* SplashViewController.swift */,
+				8AB0574E1E82AAD60076DDFC /* PostViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +191,7 @@
 				8ADE0EB61E7FF44700CE0EAA /* PostCardCell.swift */,
 				8ADE0EB71E7FF44700CE0EAA /* PostEditorImageCell.swift */,
 				8ADE0EB81E7FF44700CE0EAA /* PostEditorMessageCell.swift */,
+				8AB0574A1E82A39E0076DDFC /* PostTileCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 				8ADE0ECE1E7FF5F300CE0EAA /* UserService.swift */,
 				8ADE0ED61E800CF700CE0EAA /* FeedService.swift */,
 				8ADE0EDC1E80134100CE0EAA /* AuthService.swift */,
+				8AB057481E8292660076DDFC /* PostService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -352,12 +364,16 @@
 				8ADE0EC01E7FF44700CE0EAA /* UIImage+Grayscaled.swift in Sources */,
 				8ADE0EC41E7FF44700CE0EAA /* LoginViewController.swift in Sources */,
 				8ADE0ED51E80027400CE0EAA /* DataResponse+MapResult.swift in Sources */,
+				8AB0574D1E82A6A90076DDFC /* FeedViewMode.swift in Sources */,
+				8AB0574F1E82AAD60076DDFC /* PostViewController.swift in Sources */,
 				8ADE0EC11E7FF44700CE0EAA /* UIImageView+SetImageWithPhotoID.swift in Sources */,
 				8ADE0EBE1E7FF44700CE0EAA /* Post.swift in Sources */,
+				8AB057491E8292660076DDFC /* PostService.swift in Sources */,
 				8ADE0ECF1E7FF5F300CE0EAA /* UserService.swift in Sources */,
 				8ADE0EC31E7FF44700CE0EAA /* FeedViewController.swift in Sources */,
 				8ADE0EC71E7FF44700CE0EAA /* SplashViewController.swift in Sources */,
 				8ADE0ECB1E7FF44700CE0EAA /* PostEditorMessageCell.swift in Sources */,
+				8AB0574B1E82A39E0076DDFC /* PostTileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

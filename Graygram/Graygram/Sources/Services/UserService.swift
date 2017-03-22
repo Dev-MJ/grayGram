@@ -34,7 +34,7 @@ struct UserService {
           if let json = value as? [String: Any] {
             let user = User(JSON: json) //생성자
             // let user = Mapper<User>().map(JSON: json) 과 동일함
-           ⭐️⭐️⭐️
+           ⭐️⭐️⭐️⭐️⭐️⭐️
           }
           */
           //Mapper<User>().map(JSONObject: <#T##Any?#>)

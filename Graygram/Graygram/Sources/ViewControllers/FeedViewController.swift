@@ -8,9 +8,11 @@
 
 import UIKit
 
-//import Alamofire
-
 class FeedViewController: UIViewController {
+
+  fileprivate struct Metric {
+    static let tileCellSpacing = CGFloat(3)
+  }
   
   // MARK: Properties
   
@@ -18,9 +20,29 @@ class FeedViewController: UIViewController {
   ///더보기 url이 있는지 없는지 저장하기 위한 변수
   var nextURLString: String?
   var isLoading: Bool = false //로딩중일 떄는 로딩 안하게 하기 위한 변수
+  var viewMode: FeedViewMode = .card {
+    didSet {  //⭐️⭐️⭐️⭐️⭐️
+      switch self.viewMode {
+      case .card:
+        self.navigationItem.leftBarButtonItem = self.tileButtonItem
+      case .tile:
+        self.navigationItem.leftBarButtonItem = self.cardButtonItem
+      }
+      self.collectionView.reloadData()
+    }
+  }
   
   
   // MARK: UI
+  
+  fileprivate let tileButtonItem = UIBarButtonItem(image: UIImage(named: "icon-tile"),
+                                                   style: .plain,
+                                                   target: nil,
+                                                   action: nil)
+  fileprivate let cardButtonItem = UIBarButtonItem(image: UIImage(named: "icon-card"),
+                                                   style: .plain,
+                                                   target: nil,
+                                                   action: nil)
   
   let refreshControl = UIRefreshControl()
   //collectionView object생성시에는 반드시 이 2개의 params를 가져야 함
@@ -28,18 +50,31 @@ class FeedViewController: UIViewController {
   //collectionViewLayout에 커스텀 하여 추가할 수도 있다.
   let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
   
+  
   // MARK: View Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    //⭐️⭐️⭐️이렇게 하면 해당 view의 navigationController의 tintColor만 변경됨 -> Appdelegate에서 변경하면 전체가 변경!!!!
+    //self.navigationController?.navigationBar.tintColor = .black
+    
+    self.navigationItem.leftBarButtonItem = self.tileButtonItem
+    self.tileButtonItem.target = self
+    self.tileButtonItem.action = #selector(tileButtonItemDidTap)
+    self.cardButtonItem.target = self
+    self.cardButtonItem.action = #selector(cardButtonItemDidTap)
+    
     //UIControlEvents : enum. 어떤 컨트롤에서 발생할 수 있는 이벤트들 정의.
     self.refreshControl.addTarget(self, action: #selector(refreshControlDidChangeValue), for: .valueChanged)
     self.collectionView.backgroundColor = .white
+    self.collectionView.alwaysBounceVertical = true //⭐️⭐️collectionView의 contentView가 scrollView보다 작으면 스크롤리 안되는데 이렇게 하면 항상 됨
     self.collectionView.dataSource = self
     self.collectionView.delegate = self
                                             //class.self : 그 클래스 자체에 대한 참조
     self.collectionView.register(PostCardCell.self, forCellWithReuseIdentifier: "postCell")
     //postCell로 꺼내온 cell은 PostCardCell클래스이다. 라는 개념
+    self.collectionView.register(PostTileCell.self, forCellWithReuseIdentifier: "tileCell")
     self.collectionView.register(CollectionActivityIndicatorView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "activityIndicatorView")
 
     self.view.addSubview(self.collectionView) //storyboard에서 드래그앤드롭 한것과 같음
@@ -89,7 +124,18 @@ class FeedViewController: UIViewController {
     //NotificationCenter.default.removeObserver(observer: Any, name: NSNotification.Name?, object: Any?) : 특정 observer만 지울 경우
   }
   
-  func refreshControlDidChangeValue(){  // ⭐️ 여기에 fileprivate만 쓰면 에러. selector에서 쓰려면 private안됨. but dynamic과 함께 사용하면 됨
+  fileprivate dynamic func tileButtonItemDidTap(){
+    self.viewMode = .tile
+    /*⭐️⭐️⭐️⭐️⭐️
+      원래는 하단에 leftbarbutton 바꿔주고, reload도 해야하는데 이걸 didSet으로 한방에!!
+     */
+  }
+  
+  fileprivate dynamic func cardButtonItemDidTap(){
+    self.viewMode = .card
+  }
+  
+  fileprivate dynamic func refreshControlDidChangeValue(){  // ⭐️⭐️⭐️⭐️ 여기에 fileprivate만 쓰면 에러. selector에서 쓰려면 private안됨. but dynamic과 함께 사용하면 됨
     //self.loadFeed(isMore: false)
     self.loadFeed(paging: .refresh)
   }
@@ -112,6 +158,10 @@ class FeedViewController: UIViewController {
         }
         self.nextURLString = feed.nextURLString
         self.collectionView.reloadData()
+        
+        //⭐️⭐️⭐️content의 수가 적어서 collectionView가 더보기 안될때 이거 호출 하면 더보기 할 수 있음
+        self.scrollViewDidScroll(self.collectionView)
+        
       case .failure(let error):
         print("피드 요청 실패 : \(error)")
       }
@@ -212,11 +262,18 @@ extension FeedViewController: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCardCell
-    // ⭐️ collectionView에서는 row 대신 item 사용! row는 줄개념. collectionView는 행, 열 다 가능하므로 row 대신 item으로 쓴다
     let post = self.posts[indexPath.item]
-    cell.configure(post: post)
-    return cell
+    switch self.viewMode {
+    case .card:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCardCell
+      // ⭐️ collectionView에서는 row 대신 item 사용! row는 줄개념. collectionView는 행, 열 다 가능하므로 row 대신 item으로 쓴다
+      cell.configure(post: post, isMessageTrimmed: true)
+      return cell
+    case .tile:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "tileCell", for: indexPath) as! PostTileCell
+      cell.configure(post: post)
+      return cell
+    }
   }
   
   // ⭐️ 여기에 activityIndicator 구현할 것. 앱 실행시키면 footer가 먼저 실행된 상태(최상단 위치)에서 cell들이 그려지는것을 알 수 있음
@@ -249,19 +306,46 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    //return CGSize(width: collectionView.frame.width, height: collectionView.frame.width + 100)
+    
     let post = self.posts[indexPath.item]
-    return PostCardCell.size(width: collectionView.width, post: post) //PostCardCell에서 size 계산하는 함수 호출
+    switch self.viewMode {
+    case .card:
+      return PostCardCell.size(width: collectionView.width, post: post, isMessageTrimmed: true) //PostCardCell에서 size 계산하는 함수 호출
+    case .tile:
+      let cellWidth = round((collectionView.width - Metric.tileCellSpacing * 2) / 3)  //⭐️소수점 없애지 않으면 화면이 흐리게 보이는 현상 발생할 수 있음
+      return PostTileCell.size(width: cellWidth, post: post) //⭐️cell들 간의 간격 고려해야함!!! collectionView는 item간 간격을 기본으로 10px 갖고 있음
+    }
   }
   
-  //cell사이 간격 - 첫번째 cell에는 적용이 안됨
+  //cell사이 세로 간격 - 첫번째 cell에는 적용이 안됨
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 15
+    switch self.viewMode {
+    case .card:
+      return 15
+    case .tile:
+      return Metric.tileCellSpacing
+    }
+  }
+  
+  //cell 사이 가로 간격
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    switch self.viewMode {
+    case .card:
+      return 0
+    case .tile:
+      return Metric.tileCellSpacing
+    }
   }
   
   //각 섹션에 inset을 부여함 - 안쪽의 너비 조절 minimumLineSpacingForSectionAt이 첫번쨰 cell과 마지막Cell에 적용이 안되므로.
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    switch self.viewMode {
+    case .card:
+      return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    case .tile:
+      return .zero
+    }
+    
   }
   
   //supplementaryElementView size
@@ -271,5 +355,11 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     }else{
       return CGSize(width: collectionView.width, height: 44)
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let post = self.posts[indexPath.item]
+    let postViewController = PostViewController(post: post)
+    self.navigationController?.pushViewController(postViewController, animated: true)
   }
 }

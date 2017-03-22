@@ -8,8 +8,6 @@
 
 import UIKit
 
-import Alamofire
-
 final class PostEditorViewController: UIViewController {
   
   fileprivate let image: UIImage
@@ -104,6 +102,31 @@ final class PostEditorViewController: UIViewController {
     
     self.progressView.isHidden = false
     
+    
+    PostService.create(image: self.image,
+                       message: self.message,
+                       progress: { [weak self] progress in  //⭐️⭐️⭐️ 약한참조!! = 넘길 때 refCount를 증가시키지 않음
+                        // ⭐️⭐️⭐️⭐️self: 약한 참조가 걸리면 PostEditorViewController? 로 optional이 됨!!
+//                        self.progressView.progress =
+                        self?.progressView.progress =
+                        Float(progress.completedUnitCount) / Float(progress.totalUnitCount)
+                       },
+                       completion: { [weak self] response in
+                        guard let strongSelf = self else { return }
+                        //⭐️⭐️guard let `self` = self else { return }  이렇게 `` 사용하면 아래에서 그대로 self 사용 가능
+                        switch response.result {
+                        case .success(let post):
+                          NotificationCenter.default.post(name: .postDidCreate,
+                                                          //object: self, //누가 이 noti를 발생시켰니
+                                                          object: strongSelf,
+                                                          userInfo: ["post":post])
+                        //self.dismiss(animated: true, completion: nil)
+                        strongSelf.dismiss(animated: true, completion: nil)
+                        case .failure(let error):
+                          print("업로드 실패")
+                        }
+                       })
+    /*
     // ⭐️⭐️⭐️⭐️Multipart FormData - 큰 파일을 바이너리로 보낼 수 있는 형식
     let urlString = "https://api.graygram.com/posts"
     let headers: HTTPHeaders = [
@@ -165,6 +188,7 @@ final class PostEditorViewController: UIViewController {
         self.progressView.progress = 0
       }
     })
+ */
   }
 }
 

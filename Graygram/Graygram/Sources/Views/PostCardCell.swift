@@ -8,9 +8,6 @@
 
 import UIKit
 
-import Alamofire
-
-
 //더이상 상속이 발생하지 않을 클래스
 final class PostCardCell: UICollectionViewCell {
   
@@ -107,7 +104,9 @@ final class PostCardCell: UICollectionViewCell {
   
   // MARK: - configure
   
-  func configure(post: Post){
+  /// - parameter post: `Post` 인스턴스
+  /// - parameter isMessageTrimmed: 메세지 라벨 높이를 제한할 것인지를 나타냅니다.
+  func configure(post: Post, isMessageTrimmed: Bool){
     self.backgroundColor = .white
     /*  UIImageView extension으로 축약!!!!
     let url = URL(string: "https://www.graygram.com/photos/\(post.photoID!)/600x600")  //https여서 security 설정 안해도 됨
@@ -126,6 +125,7 @@ final class PostCardCell: UICollectionViewCell {
 //    }
     
     self.messageLabel.text = post.message
+    self.messageLabel.numberOfLines = isMessageTrimmed ? 3 : 0
     self.setNeedsLayout()
   }
   
@@ -133,7 +133,7 @@ final class PostCardCell: UICollectionViewCell {
   // MARK: - size
   
   //자기 자신의 너비에 따라 cell size 계산하는 함수 설정
-  class func size(width: CGFloat, post: Post) -> CGSize {
+  class func size(width: CGFloat, post: Post, isMessageTrimmed: Bool) -> CGSize {
     var height: CGFloat = 0
     
     /* height 계산 */
@@ -154,6 +154,9 @@ final class PostCardCell: UICollectionViewCell {
     if let message = post.message, !message.isEmpty {
       height += Metric.messageLabelTop
       
+      height += message.height(width: width - Metric.messageLabelLeft - Metric.messageLabelRight, font: Font.memessageLabel, numberOfLines: isMessageTrimmed ? 3 : 0)
+      
+      /*
       //string이 랜더링 될 최대 크기
       let messageLabelMaxSize = CGSize(width: width - Metric.messageLabelLeft - Metric.messageLabelRight, height: Font.memessageLabel.lineHeight * 3)
       // ⭐️⭐️⭐️ boundingRect는 NSString에서만 구현 가능하므로 casting후에 as NSString 지우면 가능하다....
@@ -165,7 +168,9 @@ final class PostCardCell: UICollectionViewCell {
                            options: [.usesLineFragmentOrigin, .usesFontLeading],
                            attributes: [NSFontAttributeName: Font.memessageLabel],
                            context: nil)
+ 
       height += ceil(boundingRect.height) //무리수이므로, ceil(소수점 올림 사용) - boundingRect계산하면 높이가 무리수가 나오므로 픽셀이 조금씩 밀릴 수 있음
+       */
     }
     
     return CGSize(width: width, height: height)
@@ -243,7 +248,7 @@ final class PostCardCell: UICollectionViewCell {
   }
   
   func like(){
-    
+    /*
     //⭐️postID를 여기서 쓰기 위해 전역변수로 postID 저장변수 선언한다! -> post 하나로 퉁치게 변경
     //guard let postID = self.post?.id else { return }
     guard let post = self.post else { return }
@@ -275,10 +280,25 @@ final class PostCardCell: UICollectionViewCell {
            */
         }
     }
+ */
+
+    guard let post = self.post else { return }
+    NotificationCenter.default.post(name: .postDidLike, object: self, userInfo: ["postID":post.id])
+    PostService.like(postID: post.id){ response in
+      switch response.result {
+      case .success:
+        print("좋아요 요청 성공")
+      case .failure(let error):
+        NotificationCenter.default.post(name: .postDidUnlike, object: self, userInfo: ["postID":post.id])
+         self.likeButton.isSelected = post.isLiked
+         self.likeCountLabel.text = self.likeCountLabelText(with: post.likeCount)
+ 
+      }
+    }
   }
   
   func unlike(){
-    
+/*
     //postID를 여기서 쓰기 위해 전역변수로 postID 저장변수 선언한다! -> post 하나로 퉁치게 변경
     //guard let postID = self.post?.id else { return }
     guard let post = self.post else { return }
@@ -305,6 +325,18 @@ final class PostCardCell: UICollectionViewCell {
           self.likeCountLabel.text = self.likeCountLabelText(with: post.likeCount)
            */
         }
+    }
+ */
+
+    guard let post = self.post else { return }
+    NotificationCenter.default.post(name: .postDidUnlike, object: self, userInfo: ["postID":post.id])
+    PostService.unlike(postID: post.id){ response in
+      switch response.result {
+      case .success:
+        print("좋아요 취소 성공")
+      case .failure(let error):
+        NotificationCenter.default.post(name: .postDidLike, object: self, userInfo: ["postID":post.id])
+      }
     }
   }
   

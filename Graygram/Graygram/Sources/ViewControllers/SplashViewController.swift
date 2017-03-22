@@ -8,8 +8,6 @@
 
 import UIKit
 
-//import Alamofire
-
 final class SplashViewController: UIViewController {
   
   let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)

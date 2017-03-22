@@ -22,6 +22,7 @@ struct AutoService {
       .responseJSON{ response in
         let newResponse: DataResponse<Void> = response
           .flapMap{ value in
+            print("좋아요 호출시 value : \(value)")
             return .success(Void())
         }
         completion(newResponse)

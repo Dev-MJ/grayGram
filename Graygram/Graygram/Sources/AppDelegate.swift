@@ -25,6 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
+    //⭐️⭐️⭐️⭐️⭐️ 모든 navigationBar의 tintColor를 변경!!!
+    UINavigationBar.appearance().tintColor = .black
+    UIBarButtonItem.appearance().tintColor = .black //⭐️⭐️⭐️⭐️뒤로가기 버튼 변경!!!
+    UITabBar.appearance().tintColor = .black  //⭐️⭐️⭐️⭐️tabBar 버튼 변경!!!
+    
+    
     let window = UIWindow(frame: UIScreen.main.bounds)  //윈도우 생성
     window.backgroundColor = .white //배경색 흰색으로
     window.makeKeyAndVisible()    // ⭐️ 코드로 윈도우 생성할 때 기본적으로 해줘야 함
