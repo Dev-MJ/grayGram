@@ -12,18 +12,23 @@ import UIKit
 import Kingfisher
 import ManualLayout
 import SnapKit
+import URLNavigator
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  var destination: URL? //앱이 실행이 된 후, 앱이 모두 초기화 된 뒤에(feedVC 볼 수 있는 단계에 갔을 때)이 걸로 destinationVC를 결정
   
   // ⭐️⭐️⭐️ 싱글톤 클래스 프로퍼티 생성
   class var instance: AppDelegate? {
     return UIApplication.shared.delegate as? AppDelegate  // AppDelegate.instance 로 접근 가능
   }
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    URLNavigationMap.initialize()
     
     //⭐️⭐️⭐️⭐️⭐️ 모든 navigationBar의 tintColor를 변경!!!
     UINavigationBar.appearance().tintColor = .black
@@ -43,10 +48,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let viewController = SplashViewController()
     window.rootViewController = viewController  // 여기서 로그인 유무 판단하여 login or feed로 이동시킬지 결정할거임
     
-    
     self.window = window
     
+    if let url = launchOptions?[.url] as? URL {  //Any -> URL
+      //Navigator.present(url, wrap: true)  //바로 이렇게 하면 해당 postVC가 뜬 뒤에, splashVC에 의해 FeedVC가 떠버림. 따라서 destination이라는 변수를 이용하여, feedVC가 뜬 뒤에 destination으로 목적지 VC를 띄움
+      self.destination = url
+    }
+    
     return true
+  }
+  
+  //⭐️⭐️⭐️ 앱이 background에 있다가 URL을 통해 foreground로 전환된 경우
+  func application(_ app: UIApplication,
+                   open url: URL,
+                   options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    
+    if Navigator.present(url, wrap: true) != nil {
+      return true   //우리가 처리할 수 있는 url인 경우, true를 return해줘야 해당 url은 이 앱에서 처리 가능하다는 것을 전달할 수 있음
+    }
+    return false
   }
 
   func presentLoginScreen(){
@@ -73,9 +93,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     */
     
     //변경!
-    
     let tabBarController = MainTabBarController()
     self.window?.rootViewController = tabBarController
+    
+    if let destination = self.destination {
+      Navigator.present(destination, wrap: true)
+    }
   }
 }
 

@@ -105,7 +105,7 @@ final class PostEditorViewController: UIViewController {
     
     PostService.create(image: self.image,
                        message: self.message,
-                       progress: { [weak self] progress in  //⭐️⭐️⭐️ 약한참조!! = 넘길 때 refCount를 증가시키지 않음
+                       progress: { [weak self] progress in  //⭐️⭐️⭐️ 약한참조!! => 넘길 때 refCount를 증가시키지 않음
                         // ⭐️⭐️⭐️⭐️self: 약한 참조가 걸리면 PostEditorViewController? 로 optional이 됨!!
 //                        self.progressView.progress =
                         self?.progressView.progress =
@@ -211,7 +211,7 @@ extension PostEditorViewController: UITableViewDataSource {
         //textView가 바뀔 때 마다 이녀석이 text를 받음
         self.message = text
         
-        //⭐️⭐️포커스 잃지 않고 높이만 변경
+        //⭐️⭐️⭐️⭐️포커스 잃지 않고 높이만 변경
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
         self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)

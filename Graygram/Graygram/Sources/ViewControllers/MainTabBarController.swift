@@ -11,6 +11,7 @@ import UIKit
 final class MainTabBarController: UITabBarController {
   
   let feedViewController = FeedViewController()
+  let settingsViewController = SettingsViewController()
   
   /// 탭바에 업로드 버튼 영역을 만들기 위한 가짜 뷰 컨트롤러
   let fakeViewController = UIViewController()
@@ -25,7 +26,9 @@ final class MainTabBarController: UITabBarController {
     self.fakeViewController.tabBarItem.image = #imageLiteral(resourceName: "tab-upload")  // 이렇게 title 없으면 이미지가 상단에 위치함(title 자리 비워놔서)
     self.fakeViewController.tabBarItem.imageInsets.top = 5 // ⭐️ top: 5 == 위에서 5만큼 내려옴 -> bottom도 5를 줘야 찌부가 안됨
     self.fakeViewController.tabBarItem.imageInsets.bottom = -5
-    self.viewControllers = [UINavigationController(rootViewController: self.feedViewController), self.fakeViewController,] // navi로 감싸서 넣는다. appdelegate의 navi구현부분을 여기서 해줌!!!
+    self.viewControllers = [UINavigationController(rootViewController: self.feedViewController),
+                            UINavigationController(rootViewController: self.settingsViewController),
+                            self.fakeViewController,] // navi로 감싸서 넣는다. appdelegate의 navi구현부분을 여기서 해줌!!!
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -64,7 +67,7 @@ extension MainTabBarController: UITabBarControllerDelegate {
     return true
   }
   
-  //shouldSelect가 true를 반환한 뒤에 화면이 정상적으로 바뀌었을 떄 호출되는 녀석
+  //⭐️⭐️⭐️shouldSelect가 true를 반환한 뒤에 화면이 정상적으로 바뀌었을 떄 호출되는 녀석
   override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
     
   }

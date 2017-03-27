@@ -12,6 +12,8 @@
 		8AB0574B1E82A39E0076DDFC /* PostTileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0574A1E82A39E0076DDFC /* PostTileCell.swift */; };
 		8AB0574D1E82A6A90076DDFC /* FeedViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0574C1E82A6A90076DDFC /* FeedViewMode.swift */; };
 		8AB0574F1E82AAD60076DDFC /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0574E1E82AAD60076DDFC /* PostViewController.swift */; };
+		8AC522591E89393C00DF940D /* URLNavigationMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC522581E89393C00DF940D /* URLNavigationMap.swift */; };
+		8AC5225B1E89451300DF940D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC5225A1E89451300DF940D /* SettingsViewController.swift */; };
 		8ADE0EBB1E7FF44700CE0EAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE0EA21E7FF44700CE0EAA /* Assets.xcassets */; };
 		8ADE0EBC1E7FF44700CE0EAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8ADE0EA31E7FF44700CE0EAA /* LaunchScreen.storyboard */; };
 		8ADE0EBD1E7FF44700CE0EAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE0EA61E7FF44700CE0EAA /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 		8AB0574A1E82A39E0076DDFC /* PostTileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTileCell.swift; sourceTree = "<group>"; };
 		8AB0574C1E82A6A90076DDFC /* FeedViewMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewMode.swift; sourceTree = "<group>"; };
 		8AB0574E1E82AAD60076DDFC /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		8AC522581E89393C00DF940D /* URLNavigationMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLNavigationMap.swift; sourceTree = "<group>"; };
+		8AC5225A1E89451300DF940D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8AD639B91E5DA9A8008E51ED /* Graygram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graygram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADE0EA21E7FF44700CE0EAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ADE0EA41E7FF44700CE0EAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				8ADE0ED21E8000E400CE0EAA /* MappingError.swift */,
 				8ADE0EDA1E80102800CE0EAA /* Paging.swift */,
 				8AB0574C1E82A6A90076DDFC /* FeedViewMode.swift */,
+				8AC522581E89393C00DF940D /* URLNavigationMap.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				8ADE0EB21E7FF44700CE0EAA /* PostEditorViewController.swift */,
 				8ADE0EB31E7FF44700CE0EAA /* SplashViewController.swift */,
 				8AB0574E1E82AAD60076DDFC /* PostViewController.swift */,
+				8AC5225A1E89451300DF940D /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -369,6 +375,8 @@
 				8ADE0EC11E7FF44700CE0EAA /* UIImageView+SetImageWithPhotoID.swift in Sources */,
 				8ADE0EBE1E7FF44700CE0EAA /* Post.swift in Sources */,
 				8AB057491E8292660076DDFC /* PostService.swift in Sources */,
+				8AC522591E89393C00DF940D /* URLNavigationMap.swift in Sources */,
+				8AC5225B1E89451300DF940D /* SettingsViewController.swift in Sources */,
 				8ADE0ECF1E7FF5F300CE0EAA /* UserService.swift in Sources */,
 				8ADE0EC31E7FF44700CE0EAA /* FeedViewController.swift in Sources */,
 				8ADE0EC71E7FF44700CE0EAA /* SplashViewController.swift in Sources */,

@@ -26,8 +26,16 @@ struct AutoService {
             return .success(Void())
         }
         completion(newResponse)
-        
     }
-    
+  }
+  
+  static func logout(){
+    let storage = HTTPCookieStorage.shared  //cookie 목록 받아옴
+    if let cookies = storage.cookies { //cookies 배열 돌면서 모두 제거
+      for cookie in cookies {
+        storage.deleteCookie(cookie)
+        print("쿠키 학제 :\(cookie.name)")
+      }
+    }
   }
 }

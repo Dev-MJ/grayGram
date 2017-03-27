@@ -281,7 +281,9 @@ extension FeedViewController: UICollectionViewDataSource {
   -> collectionView 가장 하단에 activityIndicator를 붙인다.
   -> UICollectionReusableView에 넣으면 됨!! 이녀석은 tableView의 footer, header처럼 하나만 갖는게 아니라(전체 tableView에 하나씩) 여러개 아무곳에서나 가질 수 있음(섹션별로 하나씩)
  */
-  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+  func collectionView(_ collectionView: UICollectionView,
+                      viewForSupplementaryElementOfKind kind: String,
+                      at indexPath: IndexPath) -> UICollectionReusableView {
     let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter,
                                                                withReuseIdentifier: "activityIndicatorView",
                                                                for: indexPath)
@@ -294,9 +296,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     //scrollView.contentOffset : 스크롤이 어디있는지 위치. contentOffSet은 보여지는 화면의 맨 위가 기준. contentSize는 보여지는 화면 맨 밑이 기준. 얼마만큼 스크롤 되는가
-    //⭐️ contentOffset은 collectionView의 맨 위가 0. 아래로 내려갈 수록 증가
-    //⭐️ 따라서 contentOffSet + collectioinView Height = contentSize
-    //⭐️ scrollView.contentSize : 스크롤 최대 높이
+    //⭐️⭐️ contentOffset은 collectionView의 맨 위가 0. 아래로 내려갈 수록 증가
+    //⭐️⭐️ 따라서 contentOffSet + collectioinView Height = contentSize
+    //⭐️⭐️ scrollView.contentSize : 스크롤 최대 높이
     if scrollView.contentOffset.y + scrollView.height >= scrollView.contentSize.height - 200 && scrollView.contentSize.height > 0 {
       //loadFeed(isMore: true)
       if let nextURLString = self.nextURLString {
@@ -305,7 +307,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView,
+                      layout collectionViewLayout: UICollectionViewLayout,
+                      sizeForItemAt indexPath: IndexPath) -> CGSize {
     
     let post = self.posts[indexPath.item]
     switch self.viewMode {
@@ -345,7 +349,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     case .tile:
       return .zero
     }
-    
   }
   
   //supplementaryElementView size
@@ -359,7 +362,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let post = self.posts[indexPath.item]
-    let postViewController = PostViewController(post: post)
+    let postViewController = PostViewController(postID: post.id, post: post)
     self.navigationController?.pushViewController(postViewController, animated: true)
   }
 }

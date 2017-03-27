@@ -39,7 +39,7 @@ final class PostEditorMessageCell: UITableViewCell {
     
     let minimumHeight = ceil(Font.textViewFont.lineHeight * 3)  //초기에 message가 비어있을 경우, 적당한 높이를 부여해야 하므로
     let messageHeight = message.height(width: width, font: Font.textViewFont)
-    //기본적으로 UITextView는 위 아래로 10px씩 여백이 들어가있음. 따라서 20px 더해야함
+    //⭐️⭐️⭐️기본적으로 UITextView는 위 아래로 10px씩 여백이 들어가있음. 따라서 20px 더해야함
     
     return max(minimumHeight, messageHeight) + 20
   }

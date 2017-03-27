@@ -18,13 +18,20 @@ struct UserService {
       .validate(statusCode: 200..<400)
       .responseJSON{ response in
         let newResponse: DataResponse<User> = response
-          .flapMap { value in  //성공했을 떄의 value
+          .flapMap({ (value) -> Result<User> in
             if let user = Mapper<User>().map(JSONObject: value) {
               return .success(user)
             }else{
               return .failure(MappingError(from: value, to: User.self))
             }
-          }
+          })
+//          .flapMap { value in  //성공했을 떄의 value
+//            if let user = Mapper<User>().map(JSONObject: value) {
+//              return .success(user)
+//            }else{
+//              return .failure(MappingError(from: value, to: User.self))
+//            }
+//          }
         completion(newResponse)
         /*
         switch response.result {

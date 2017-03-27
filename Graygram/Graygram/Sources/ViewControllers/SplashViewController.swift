@@ -41,7 +41,7 @@ final class SplashViewController: UIViewController {
     
     
     checkLoginSession()
-    /* ⭐️⭐️
+    /* ⭐️⭐️⭐️⭐️⭐️
      Q. 왜 viewDidLoad에 안하고 여기에 할까?
      A. viewDidLoad가 Appdelegate에 있는 let viewController = SplashViewController()
                                       window.rootViewController = viewController

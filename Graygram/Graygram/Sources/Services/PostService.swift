@@ -79,7 +79,6 @@ struct PostService {
                   }
                 }
               completion(newResponse)
-
           }
         case .failure(let error):
           print("인코딩 실패 : \(error)")  // multipart formdata를 만들지 못한 경우
@@ -90,10 +89,24 @@ struct PostService {
                                                  result: Result<Post>.failure(error))
                                                   //post에 대한 실패상황을 넣을것.
           completion(response)
-          
         }
     })
+  }
   
+  static func post(id: Int, completion: @escaping (DataResponse<Post>) -> Void) {
+    let urlString = "https://api.graygram.com/posts/\(id)"
+    Alamofire.request(urlString)
+      .responseJSON{ response in
+        let newResponse: DataResponse<Post> = response
+          .flapMap({ (value) -> Result<Post> in //여기 value는 json임!!! 다른곳들도!!
+            if let post = Mapper<Post>().map(JSONObject: value) {
+              return Result<Post>.success(post)
+            }else{
+              return .failure(MappingError(from: value, to: Post.self))
+            }
+          })
+        completion(newResponse)
+    }
   }
   
   static func like(postID: Int, completion: @escaping (DataResponse<Void>) -> Void){
